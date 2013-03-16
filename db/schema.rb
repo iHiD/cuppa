@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130316095616) do
+ActiveRecord::Schema.define(:version => 20130316231507) do
+
+  create_table "course_registrations", :force => true do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.boolean  "feedback_form_completed", :default => false
+    t.boolean  "certificate_sent",        :default => false
+    t.boolean  "paid",                    :default => false
+  end
+
+  add_index "course_registrations", ["course_id"], :name => "index_course_registrations_on_course_id"
+  add_index "course_registrations", ["user_id"], :name => "index_course_registrations_on_user_id"
 
   create_table "courses", :force => true do |t|
     t.string   "title"
@@ -45,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20130316095616) do
     t.string   "mobile"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "course_id"
   end
 
 end
