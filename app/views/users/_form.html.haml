@@ -7,12 +7,8 @@
           %li= msg
   
 
-  .field
-    
-    =f.label :course_id
-    %br
-
-    =f.collection_select :course_id, Course.order(:title), :id, :title
+  You are registering onto #{@course.title}
+  =f.hidden_field :initial_course_id, value: @course.id
 
   .field
     = f.label :name
