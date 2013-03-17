@@ -25,11 +25,20 @@
 
 
 %h2 Registered Participants
-%ul
-  -@course.users.each do |user|
-    %li= user.name
-
-  
+%table
+  %tr
+    %th User
+    %th Feedback Form Completed?
+    %th Certificate Sent?
+    %th Paid?
+    %th status
+  -@course.registrations.each do |registration|
+    %tr
+      %td= registration.user.name
+      %td= registration.feedback_form_completed ? "Yes" : "No"
+      %td= registration.certificate_sent ? "Yes" : "No"
+      %td= registration.paid ? "Yes" : "No"
+      %td= registration.waiting_list ? "Waiting List" : "Registered"
 
 %h2 Add a Participant
 =form_for Registration.new do |f|
