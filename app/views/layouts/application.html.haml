@@ -13,8 +13,11 @@
   
 
   %body{:class => params[:controller]}
-    
     .content
+      -if user_logged_in?
+        You are logged in as #{current_user.email}    
+      -else
+        You are not logged in
 
       = yield
 
