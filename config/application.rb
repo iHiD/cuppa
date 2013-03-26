@@ -62,5 +62,7 @@ module Cuppa
     config.generators do |g| 
       g.template_engine :haml
     end
+
+    config.middleware.use "PDFKit::Middleware"
   end
 end
