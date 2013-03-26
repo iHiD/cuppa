@@ -1,7 +1,8 @@
 Cuppa::Application.routes.draw do
   root :to => "courses#index"
-  match 'certificate', :controller => 'users', :action => 'certificate'
-  resources :registrations
+  resources :registrations do
+    get "certificate", on: :member
+  end
 
 
   resources :courses
